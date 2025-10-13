@@ -29,6 +29,4 @@ echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> feeds.conf.defa
 rm -rf feeds/small/{luci-app-fchomo,luci-app-bypass,luci-app-nikki,luci-app-passwall2,mihomo,nikki,luci-app-homeproxy}
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-rm -rf feeds/luci/applications/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall feeds/luci/applications
 ./scripts/feeds install -a
