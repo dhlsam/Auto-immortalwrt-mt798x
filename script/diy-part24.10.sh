@@ -10,13 +10,6 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-# Uncomment a feed source
-#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-
-# Add feed sources
-#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-#sed -i '$a src-git diy https://github.com/CCnut/feed-netkeeper.git;LUCI-LUA-UCITRACK' feeds.conf.default
-
 status_cfg=$(git status | grep -cE "feeds.conf.default$")
 if [[ $status_cfg -eq 1 ]]; then
     git reset HEAD feeds.conf.default
@@ -29,20 +22,13 @@ fi
 git pull
 
 # Add a feed source
-#echo "src-git feeds_app https://github.com/kenzok8/openwrt-packages" >> feeds.conf.default
-#echo "src-git small https://github.com/kenzok8/small" >> feeds.conf.default
+echo "src-git feeds_app https://github.com/kenzok8/openwrt-packages" >> feeds.conf.default
+echo "src-git small https://github.com/kenzok8/small" >> feeds.conf.default
+echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> feeds.conf.default
 ./scripts/feeds update -a && rm -rf feeds/luci/{luci-app-airwhu}
-#rm -rf feeds/small/{luci-app-fchomo,luci-app-bypass,luci-app-nikki,luci-app-passwall2,mihomo,nikki}
-#rm -rf feeds/packages/lang/golang
-#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
-#rm -rf feeds/luci/applications/luci-app-passwall
-#git clone https://github.com/xiaorouji/openwrt-passwall feeds/luci/applications
-#\rm -rf ./feeds/small/luci-app-homeproxy
+rm -rf feeds/small/{luci-app-fchomo,luci-app-bypass,luci-app-nikki,luci-app-passwall2,mihomo,nikki,luci-app-homeproxy}
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+rm -rf feeds/luci/applications/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall feeds/luci/applications
 ./scripts/feeds install -a
-#make menuconfig
-
-# Add luci-theme-argon
-#cd lede/package/lean
-#rm -rf luci-theme-argon 
-#git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
-#git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
