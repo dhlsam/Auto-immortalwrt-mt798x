@@ -25,7 +25,7 @@ git pull
 echo "src-git feeds_app https://github.com/kenzok8/openwrt-packages" >> feeds.conf.default
 echo "src-git small https://github.com/kenzok8/small" >> feeds.conf.default
 echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> feeds.conf.default
-echo 'src-git mt5700webui https://gitee.com/kcro/luci-app-mt5700webui.git;master' >> feeds.conf.default
+#echo 'src-git mt5700webui https://gitee.com/kcro/luci-app-mt5700webui.git;master' >> feeds.conf.default
 ./scripts/feeds update -a && rm -rf feeds/luci/{luci-app-airwhu}
 rm -rf feeds/small/{luci-app-fchomo,luci-app-bypass,luci-app-nikki,luci-app-passwall2,mihomo,nikki,luci-app-homeproxy}
 rm -rf feeds/packages/lang/golang
